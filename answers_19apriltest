@@ -1,0 +1,58 @@
+# OQUESTION 1.
+#CREATE A IMAGE WITH NAME AS ALPINE:JAYESH
+docker tag alpine:latest alpine:jayesh
+#RUNNING A CONTAINEIN THE IMAGE AND GETTING DATE AS REQUIRED
+docker run --name jayeshc1q1 alpine:jayesh date +%H:%M:%S > question1.txt
+#TO GET THE OUTPUT USE COMMAND AND THE FILE IS ALSO PROVIDED
+cat question1.txt                                                                                                                             
+12:14:55  
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# OQUESTION 2.
+#CLONING THE WEBAPP
+git clone https://github.com/redashu/summer2020dockertest.git
+cd summer2020dockertest
+#BUILDING THE IMAGE WITH THE DOCKER FILE
+docker bulid -t adhoc:jayesh .
+#CHANGING NAEM OF FILE
+docker tag adhoc:jayesh adhoc:jayeshbudhwani1999
+#LOGGING IN TO DOCKER HUB
+docker login --username=jayeshbudhwani1999 --password=Jxxxxxxx3
+#PUSHING THE IMAGE ON DOCKER HUB
+docker tag 8f2f95adfa73 jayeshbudhwani1999/verse_gapminder:firsttry
+docker push jayeshbudhwani1999/verse_gapminder
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# OQUESTION 3.
+#RUNNING THE CONTAINER WITH THE PORT 4444
+docker run --name jayeshc3q3 -d -p 4444:80 dockerashu/ckad:v2
+#OUTPUT PROVIDED IN FILE AS q3.txt
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# OQUESTION 4.
+#contents of docker file.
+FROM centos
+maintainer  jayeshbudhwani1999@gmail.com
+#RUN  yum  install httpd -y
+RUN  mkdir  /mycode
+COPY beginner-html-site-styled-gh-pages /mycode/beginner-html-site-styled-gh-pages
+EXPOSE 80
+ENTRYPOINT  ["/bin/bash","/mycode/beginner-html-site-styled-gh-pages"]
+#rRUNNING THE CONTAINER AS ASKED WITH PORT NO. 6666:80
+docker run --name jayeshc4q4 -d -p 6666:80 jayesh:q4
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# OQUESTION 5.
+#CREATING THE DOCKER VOLUME AND CHECKING THE SAME
+docker volume create jayeshq5
+docker volume ls
+#ATTACHING VOLUMES TO CONTAINER
+docker run --name jayeshc5q5 -v jayeshq5:/adhocvol -v /etc/passwd:/user.txt  alpine sh
+
+
+
+
